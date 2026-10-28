@@ -1,49 +1,57 @@
 # Apex Ascent - Roblox Obstacle Course
 
-A fun but **not easy** multi-stage Roblox obby with:
+**One single script** that gives you a complete fun-but-hard multi-stage obby.
 
-- Checkpoints
-- Permanent leaderboard (Wins + Highest Stage)
+### Features included
+- Checkpoints + Stage tracking
+- Permanent leaderboard (Wins + Highest Stage) with DataStores
 - Moving platforms
+- Disappearing platforms
+- Spinning platforms
+- Jump pads / launchers
+- Falling platforms
 - Kill bricks
-- Ready for multiple stages
-- Extra obstacle scripts included
+- Finish line that awards Wins and resets progress
 
 ---
 
-## Quick Setup in Roblox Studio
+## Setup (very easy)
 
-### 1. Create the folders in Workspace
+1. Open Roblox Studio
+2. In **ServerScriptService** create a new **Script** and name it `MainObby`
+3. Delete the default code and paste everything from  
+   `ServerScriptService/MainObby.lua`
+4. Create these folders/parts in **Workspace**:
 
 ```
 Workspace
-├─ Checkpoints          ← Parts named "1", "2", "3"... (Anchored)
-├─ KillBricks           ← Any deadly parts (lava, spikes, etc.)
-├─ MovingPlatforms      ← Platforms that slide
-└─ Finish               ← One Part at the very end of the course
+├─ Checkpoints            (Parts named "1", "2", "3"...)
+├─ KillBricks
+├─ MovingPlatforms
+├─ DisappearingPlatforms
+├─ SpinningPlatforms
+├─ JumpPads
+├─ FallingPlatforms
+└─ Finish                 (one Part at the end)
 ```
 
-### 2. Add the main script
-
-1. In **ServerScriptService**, create a new **Script**
-2. Name it `MainObby`
-3. Paste the code from `ServerScriptService/MainObby.lua`
-
-### 3. (Optional) Extra obstacles
-
-Copy the scripts from the `ExtraObstacles` folder into ServerScriptService if you want disappearing platforms, spinning platforms, jump pads, etc.
+That's it. The script automatically detects everything.
 
 ---
 
-## How the systems work
+## Optional Attributes (customize difficulty)
 
-| Feature              | How it works                                      |
-|----------------------|---------------------------------------------------|
-| **Checkpoints**      | Touch a part named `1`, `2`, `3`... to save progress |
-| **Stage**            | Current checkpoint number (shown in leaderboard)  |
-| **Wins**             | Increases every time you touch the Finish part    |
-| **Leaderboard**      | Saves permanently using DataStores                |
-| **Moving Platforms** | Use Attributes `Offset` (Vector3) and `Time` (number) |
+| Folder                 | Attribute     | Default     | Meaning                          |
+|------------------------|---------------|-------------|----------------------------------|
+| MovingPlatforms        | Offset        | 0,0,20      | How far it moves                 |
+| MovingPlatforms        | Time          | 3           | Seconds for one way              |
+| DisappearingPlatforms  | Delay         | 1.2         | Time before it disappears        |
+| DisappearingPlatforms  | RespawnTime   | 3           | Time until it comes back         |
+| SpinningPlatforms      | Speed         | 60          | Degrees per second               |
+| SpinningPlatforms      | Axis          | Y           | X / Y / Z                        |
+| JumpPads               | Power         | 80          | Upward launch strength           |
+| FallingPlatforms       | Delay         | 0.8         | Time before it falls             |
+| FallingPlatforms       | RespawnTime   | 4           | Time until it resets             |
 
 ---
 
@@ -59,14 +67,4 @@ Copy the scripts from the `ExtraObstacles` folder into ServerScriptService if yo
 
 ---
 
-## Tips for making it fun but hard
-
-- Make platforms smaller as stages progress
-- Add timing challenges (moving + disappearing together)
-- Use transparent kill bricks under thin platforms
-- Give players a short safe zone after each checkpoint
-- Test the jumps yourself — if it feels slightly unfair, it’s usually perfect for an obby
-
----
-
-Made for you by Grok • Enjoy building!
+Enjoy building your obby!
